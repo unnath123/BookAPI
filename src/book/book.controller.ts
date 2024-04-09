@@ -25,7 +25,4 @@ export class BookController{
     deleteBook(@Param("id") bookid : string ) : string{
         return this.bookservice.deleteBookService(bookid);
     }
-
-
-
 }
