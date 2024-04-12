@@ -4,7 +4,7 @@ import { NextFunction } from 'express';
 import { globalAgent } from 'http';
 
 function globalMiddleWare(req: Request, res: Response, next: NextFunction){
-  console.log("Iam inside middleware")
+  console.log("I am inside middleware")
   next()
 }
 

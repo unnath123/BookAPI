@@ -1,6 +1,9 @@
-import { Controller, Post, Get, Put, Body, Delete, Param } from "@nestjs/common";
+import { Controller, Post, Get, Put, Body, Delete, Param, ParseIntPipe, ValidationPipe, BadRequestException, UseFilters } from "@nestjs/common";
 import { BookService } from "./book.service";
 import { Book } from "./data/book.dto";
+// import { BookPipe } from "./book.bookpipe";
+import { Bookdto } from "./data/book1.dto";
+import { BookException } from "src/book.exception.filter";
 
 @Controller("book")
 export class BookController{
@@ -14,6 +17,23 @@ export class BookController{
     @Post("/addbook")
     addBook(@Body() book : Book): string {
         return this.bookservice.addBooksService(book)
+    }
+
+    @Post('/testPipes/:id')
+    testpipes(@Param("id", ParseIntPipe) testID : number) : string{
+        return "test passed 1"
+    }
+
+    @Post("/addpipe")
+    testpipe(@Body(new ValidationPipe()) book: Bookdto ) : any{
+        return "test passed"
+    }
+
+    @Get("/addpipe")
+    @UseFilters(BookException)
+    testExcp(): any{
+        throw new BadRequestException()
+        return "test passed"
     }
 
     @Put("/updatebook")
