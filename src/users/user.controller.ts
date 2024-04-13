@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, UseGuards, Request } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 
 
@@ -8,7 +8,7 @@ export class UserController{
 
     @Post('/path')
     @UseGuards(AuthGuard('local'))
-    getuser() : string{
-        return "private data"
+    getuser(@Request() req) : string{
+        return req.user
     }
 }
