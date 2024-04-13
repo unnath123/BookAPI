@@ -3,7 +3,7 @@ import { BookService } from "./book.service";
 import { Book } from "./data/book.dto";
 // import { BookPipe } from "./book.bookpipe";
 import { Bookdto } from "./data/book1.dto";
-import { BookException } from "src/book.exception.filter";
+import { BookException } from "src/book/book.exception.filter";
 import { BookGuard } from "./book.guard";
 
 @Controller("book")
